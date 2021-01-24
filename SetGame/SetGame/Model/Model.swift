@@ -22,24 +22,24 @@ struct SetGame<CardContent> where CardContent: Equatable {
         var cards = [Card]()
         var id = 0
         
-            for color in CardColor.values {
-                for figure in CardFigure.values {
-                    for number in CardNumber.values {
-                        for shading in CardShading.values {
-                            id += 1
-                            let card = Card(id: id,
-                                            figure: figure,
-                                            color: color,
-                                            shading: shading,
-                                            number: number)
-                            cards.append(card)
-                        }
+        for color in CardColor.values {
+            for figure in CardFigure.values {
+                for number in CardNumber.values {
+                    for shading in CardShading.values {
+                        id += 1
+                        let card = Card(id: id,
+                                        figure: figure,
+                                        color: color,
+                                        shading: shading,
+                                        number: number)
+                        cards.append(card)
                     }
                 }
             }
+        }
         
         return cards
-        }
+    }
     
     
     

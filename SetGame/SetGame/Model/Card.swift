@@ -17,10 +17,10 @@ enum CardNumber {
 
 enum CardFigure {
     case diamond
-    case squiggle
+    case lightning
     case stripe
     
-    static let values = [diamond, squiggle, stripe]
+    static let values = [diamond, lightning, stripe]
 }
 
 enum CardColor {

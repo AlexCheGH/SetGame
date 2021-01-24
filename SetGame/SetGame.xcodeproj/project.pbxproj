@@ -16,6 +16,9 @@
 		A53E84A625BC6A88002EFF24 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84A525BC6A88002EFF24 /* Model.swift */; };
 		A53E84A925BC7710002EFF24 /* Array + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84A825BC7710002EFF24 /* Array + Utilities.swift */; };
 		A53E84AD25BC7775002EFF24 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84AC25BC7775002EFF24 /* Card.swift */; };
+		A53E84B325BC7B32002EFF24 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84B225BC7B32002EFF24 /* Diamond.swift */; };
+		A53E84B725BC7F03002EFF24 /* Lightning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84B625BC7F03002EFF24 /* Lightning.swift */; };
+		A53E84BB25BDA8D0002EFF24 /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84BA25BDA8D0002EFF24 /* Stripe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		A53E84A525BC6A88002EFF24 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A53E84A825BC7710002EFF24 /* Array + Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array + Utilities.swift"; sourceTree = "<group>"; };
 		A53E84AC25BC7775002EFF24 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		A53E84B225BC7B32002EFF24 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		A53E84B625BC7F03002EFF24 /* Lightning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lightning.swift; sourceTree = "<group>"; };
+		A53E84BA25BDA8D0002EFF24 /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 				A53E849F25BC6A3E002EFF24 /* Grid */,
 				A53E848F25BC6A2E002EFF24 /* SetGameApp.swift */,
 				A53E849125BC6A2E002EFF24 /* ContentView.swift */,
+				A53E84B125BC7B18002EFF24 /* Shapes */,
 				A53E84AB25BC776D002EFF24 /* Model */,
 				A53E84A825BC7710002EFF24 /* Array + Utilities.swift */,
 				A53E849325BC6A32002EFF24 /* Assets.xcassets */,
@@ -98,6 +105,16 @@
 				A53E84AC25BC7775002EFF24 /* Card.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A53E84B125BC7B18002EFF24 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				A53E84B225BC7B32002EFF24 /* Diamond.swift */,
+				A53E84B625BC7F03002EFF24 /* Lightning.swift */,
+				A53E84BA25BDA8D0002EFF24 /* Stripe.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +189,10 @@
 				A53E84A625BC6A88002EFF24 /* Model.swift in Sources */,
 				A53E84A225BC6A3E002EFF24 /* GridLayout.swift in Sources */,
 				A53E84AD25BC7775002EFF24 /* Card.swift in Sources */,
+				A53E84B725BC7F03002EFF24 /* Lightning.swift in Sources */,
 				A53E84A925BC7710002EFF24 /* Array + Utilities.swift in Sources */,
+				A53E84B325BC7B32002EFF24 /* Diamond.swift in Sources */,
+				A53E84BB25BDA8D0002EFF24 /* Stripe.swift in Sources */,
 				A53E849225BC6A2E002EFF24 /* ContentView.swift in Sources */,
 				A53E849025BC6A2E002EFF24 /* SetGameApp.swift in Sources */,
 				A53E84A325BC6A3E002EFF24 /* Grid.swift in Sources */,
