@@ -12,9 +12,18 @@ struct ContentView: View {
     let game: SetGame<String> = SetGame()
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        makeView()
     }
+    
+    func makeView() -> some View {
+        VStack {
+            Grid(items: game.lessCards) { card in
+                CardView(card: card)
+                    .padding(5)
+            }
+        }
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

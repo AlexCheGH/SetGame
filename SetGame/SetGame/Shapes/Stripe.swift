@@ -21,6 +21,8 @@ struct Stripe: Shape {
                       control1: CGPoint(x: rect.maxX, y: rect.maxY),
                       control2: CGPoint(x: rect.minX, y: rect.maxY))
         
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY * 0.2))
+        
         return path
     }
 }

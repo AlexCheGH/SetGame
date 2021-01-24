@@ -22,7 +22,6 @@ struct CardView: View {
         return VStack {
             ForEach(0..<numberOfFigures) { index in
                 getFigure(for: card.figure, shading: card.shading)
-                    .padding()
             }
         }
         .colorize(color: card.color)
@@ -64,7 +63,7 @@ struct CardView: View {
 }
 
 struct CardView_Previews: PreviewProvider {
-    static let card = Card(id: 1, figure: .diamond, color: .red, shading: .open, number: .three)
+    static let card = Card(id: 1, figure: .stripe, color: .red, shading: .striped, number: .three)
     
     static var previews: some View {
         CardView(card: card)

@@ -28,3 +28,9 @@ struct Diamond: Shape {
     
     
 }
+
+struct Diamond_Previews: PreviewProvider {
+    static var previews: some View {
+        Diamond()
+    }
+}

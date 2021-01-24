@@ -10,12 +10,19 @@ import Foundation
 
 struct SetGame<CardContent> where CardContent: Equatable {
     
-    private var cards: [Card]
+    var cards: [Card]
+    
+    var lessCards = [Card]()
     
     private let numberOfCards = 81
     
     init() {
         cards = SetGame<CardContent>.generateAllCardCombinations()
+        
+        for index in 0..<21{
+            lessCards.append(cards[index])
+        }
+        
     }
     
     static private func generateAllCardCombinations() -> [Card] {
