@@ -7,14 +7,22 @@
 
 import SwiftUI
 
-struct Colorize: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct Colorize: ViewModifier {
+
+    private var color: Color
+    
+    init(color: CardColor) {
+        self.color = Color(UIColor().getColor(cardColor: color))
+    }
+    
+    func body(content: Content) -> some View {
+        content.foregroundColor(color)
     }
 }
 
-struct Colorize_Previews: PreviewProvider {
-    static var previews: some View {
-        Colorize()
+extension View {
+    func colorize(color: CardColor) -> some View {
+        self.modifier(Colorize(color: color))
     }
 }
+

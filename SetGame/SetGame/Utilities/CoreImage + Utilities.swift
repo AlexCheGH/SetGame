@@ -1,20 +1,41 @@
-//
-//  CoreImage + Utilities.swift
-//  SetGame
-//
-//  Created by AP Aliaksandr Chekushkin on 1/24/21.
-//
-
 import SwiftUI
+import CoreImage.CIFilterBuiltins
 
-struct CoreImage___Utilities: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+extension CGImage {
+
+    static func generateStripePattern(
+        colors: (UIColor, UIColor) = (.clear, .black),
+        width: CGFloat = 6,
+        ratio: CGFloat = 1) -> CGImage? {
+
+    let context = CIContext()
+    let stripes = CIFilter.stripesGenerator()
+    stripes.color0 = CIColor(color: colors.0)
+    stripes.color1 = CIColor(color: colors.1)
+    stripes.width = Float(width)
+    stripes.center = CGPoint(x: 1-width*ratio, y: 0)
+    let size = CGSize(width: width, height: 1)
+
+    guard
+        let stripesImage = stripes.outputImage,
+        let image = context.createCGImage(stripesImage, from: CGRect(origin: .zero, size: size))
+    else { return nil }
+    return image
+  }
 }
 
-struct CoreImage___Utilities_Previews: PreviewProvider {
-    static var previews: some View {
-        CoreImage___Utilities()
+extension Shape {
+
+    func stripes(angle: Double = 45, colors: (UIColor, UIColor)) -> AnyView {
+        guard
+            let stripePattern = CGImage.generateStripePattern(colors: colors)
+        else { return AnyView(self)}
+
+        return AnyView(Rectangle().fill(ImagePaint(
+            image: Image(decorative: stripePattern, scale: 1.0)))
+        .scaleEffect(2)
+        .rotationEffect(.degrees(angle))
+        .clipShape(self))
+        
     }
 }

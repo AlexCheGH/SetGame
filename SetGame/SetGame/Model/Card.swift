@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum CardNumber {
-    case one
+enum CardNumber: Int {
+    case one = 1
     case two
     case three
     
@@ -47,4 +47,6 @@ struct Card: Identifiable {
     var color: CardColor
     var shading: CardShading
     var number: CardNumber
+    
+    var isMatched: Bool = false
 }

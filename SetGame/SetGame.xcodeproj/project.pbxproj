@@ -19,6 +19,10 @@
 		A53E84B325BC7B32002EFF24 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84B225BC7B32002EFF24 /* Diamond.swift */; };
 		A53E84B725BC7F03002EFF24 /* Lightning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84B625BC7F03002EFF24 /* Lightning.swift */; };
 		A53E84BB25BDA8D0002EFF24 /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84BA25BDA8D0002EFF24 /* Stripe.swift */; };
+		A53E84BF25BDAD11002EFF24 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84BE25BDAD11002EFF24 /* CardView.swift */; };
+		A53E84C425BDB71E002EFF24 /* Colorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84C325BDB71E002EFF24 /* Colorize.swift */; };
+		A53E84D725BDCC05002EFF24 /* CoreImage + Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84D625BDCC05002EFF24 /* CoreImage + Utilities.swift */; };
+		A53E84DB25BDE852002EFF24 /* UIColor + Uitilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E84DA25BDE852002EFF24 /* UIColor + Uitilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		A53E84B225BC7B32002EFF24 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		A53E84B625BC7F03002EFF24 /* Lightning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lightning.swift; sourceTree = "<group>"; };
 		A53E84BA25BDA8D0002EFF24 /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
+		A53E84BE25BDAD11002EFF24 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A53E84C325BDB71E002EFF24 /* Colorize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colorize.swift; sourceTree = "<group>"; };
+		A53E84D625BDCC05002EFF24 /* CoreImage + Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreImage + Utilities.swift"; sourceTree = "<group>"; };
+		A53E84DA25BDE852002EFF24 /* UIColor + Uitilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Uitilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +76,12 @@
 		A53E848E25BC6A2E002EFF24 /* SetGame */ = {
 			isa = PBXGroup;
 			children = (
-				A53E849F25BC6A3E002EFF24 /* Grid */,
 				A53E848F25BC6A2E002EFF24 /* SetGameApp.swift */,
-				A53E849125BC6A2E002EFF24 /* ContentView.swift */,
+				A53E84C225BDB70D002EFF24 /* ViewModifiers */,
+				A53E84BD25BDACF9002EFF24 /* Views */,
 				A53E84B125BC7B18002EFF24 /* Shapes */,
 				A53E84AB25BC776D002EFF24 /* Model */,
-				A53E84A825BC7710002EFF24 /* Array + Utilities.swift */,
+				A53E84C725BDBED2002EFF24 /* Utilities */,
 				A53E849325BC6A32002EFF24 /* Assets.xcassets */,
 				A53E849825BC6A32002EFF24 /* Info.plist */,
 				A53E849525BC6A32002EFF24 /* Preview Content */,
@@ -117,6 +125,34 @@
 			path = Shapes;
 			sourceTree = "<group>";
 		};
+		A53E84BD25BDACF9002EFF24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A53E849F25BC6A3E002EFF24 /* Grid */,
+				A53E849125BC6A2E002EFF24 /* ContentView.swift */,
+				A53E84BE25BDAD11002EFF24 /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A53E84C225BDB70D002EFF24 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				A53E84C325BDB71E002EFF24 /* Colorize.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		A53E84C725BDBED2002EFF24 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A53E84A825BC7710002EFF24 /* Array + Utilities.swift */,
+				A53E84D625BDCC05002EFF24 /* CoreImage + Utilities.swift */,
+				A53E84DA25BDE852002EFF24 /* UIColor + Uitilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,6 +169,8 @@
 			dependencies = (
 			);
 			name = SetGame;
+			packageProductDependencies = (
+			);
 			productName = SetGame;
 			productReference = A53E848C25BC6A2E002EFF24 /* SetGame.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +198,8 @@
 				Base,
 			);
 			mainGroup = A53E848325BC6A2E002EFF24;
+			packageReferences = (
+			);
 			productRefGroup = A53E848D25BC6A2E002EFF24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -186,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53E84C425BDB71E002EFF24 /* Colorize.swift in Sources */,
 				A53E84A625BC6A88002EFF24 /* Model.swift in Sources */,
 				A53E84A225BC6A3E002EFF24 /* GridLayout.swift in Sources */,
 				A53E84AD25BC7775002EFF24 /* Card.swift in Sources */,
@@ -195,6 +236,9 @@
 				A53E84BB25BDA8D0002EFF24 /* Stripe.swift in Sources */,
 				A53E849225BC6A2E002EFF24 /* ContentView.swift in Sources */,
 				A53E849025BC6A2E002EFF24 /* SetGameApp.swift in Sources */,
+				A53E84DB25BDE852002EFF24 /* UIColor + Uitilities.swift in Sources */,
+				A53E84BF25BDAD11002EFF24 /* CardView.swift in Sources */,
+				A53E84D725BDCC05002EFF24 /* CoreImage + Utilities.swift in Sources */,
 				A53E84A325BC6A3E002EFF24 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
