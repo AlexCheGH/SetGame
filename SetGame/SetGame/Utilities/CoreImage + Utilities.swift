@@ -33,7 +33,7 @@ extension Shape {
 
         return AnyView(Rectangle().fill(ImagePaint(
             image: Image(decorative: stripePattern, scale: 1.0)))
-        .scaleEffect(2)
+        .scaleEffect(1)
         .rotationEffect(.degrees(angle))
         .clipShape(self))
         

@@ -8,23 +8,20 @@
 import Foundation
 
 
-struct SetGame<CardContent> where CardContent: Equatable {
+class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
     
-    var cards: [Card]
+   @Published var visibleCards = [Card]()
     
-    var lessCards = [Card]()
-    
+    private var fullDeck: [Card]
+    private var isFreshGame: Bool = true
     private let numberOfCards = 81
     
     init() {
-        cards = SetGame<CardContent>.generateAllCardCombinations()
-        
-        for index in 0..<21{
-            lessCards.append(cards[index])
-        }
-        
+        fullDeck = SetGame<CardContent>.generateAllCardCombinations()
+        self.populateVisibleCards()
     }
     
+    //MARK:- Getting all the cards and combinations
     static private func generateAllCardCombinations() -> [Card] {
         var cards = [Card]()
         var id = 0
@@ -44,14 +41,30 @@ struct SetGame<CardContent> where CardContent: Equatable {
                 }
             }
         }
+        cards.shuffle()
         
         return cards
     }
     
+    //MARK:- Populating visible cards
+    func populateVisibleCards() {
+        if isFreshGame {
+            dealCards(numberOfCards: 21)
+            isFreshGame = false
+        }
+        else {
+            if fullDeck.count >= 1 {
+                dealCards(numberOfCards: 3)
+            }
+        }
+    }
     
-    
-    
-    
+    private func dealCards(numberOfCards: Int) {
+        for _ in 0..<numberOfCards {
+            if let element = fullDeck.first {
+                visibleCards.append(element)
+                fullDeck.remove(at: 0)
+            }
+        }
+    }
 }
-
-

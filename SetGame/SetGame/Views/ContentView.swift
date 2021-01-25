@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let game: SetGame<String> = SetGame()
+   @ObservedObject var game: SetGame<String> = SetGame()
     
     var body: some View {
         makeView()
@@ -17,10 +17,15 @@ struct ContentView: View {
     
     func makeView() -> some View {
         VStack {
-            Grid(items: game.lessCards) { card in
+            Grid(items: game.visibleCards) { card in
                 CardView(card: card)
                     .padding(5)
             }
+            Button(action: {
+                game.populateVisibleCards()
+            }, label: {
+                Text("button")
+            })
         }
     }
     
@@ -28,6 +33,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }

@@ -18,10 +18,16 @@ struct CardView: View {
     
     private func makeFullCard(card: Card) -> some View {
         let numberOfFigures = card.number.rawValue
+        let lineWidth: CGFloat = 3
         
-        return VStack {
-            ForEach(0..<numberOfFigures) { index in
-                getFigure(for: card.figure, shading: card.shading)
+        return ZStack {
+            RoundedRectangle(cornerRadius: 10).stroke(lineWidth: lineWidth)
+            VStack {
+                ForEach(0..<numberOfFigures) { index in
+                    getFigure(for: card.figure, shading: card.shading)
+                        .padding(5)
+                        .aspectRatio(2/3, contentMode: .fit)
+                }
             }
         }
         .colorize(color: card.color)
@@ -63,7 +69,7 @@ struct CardView: View {
 }
 
 struct CardView_Previews: PreviewProvider {
-    static let card = Card(id: 1, figure: .stripe, color: .red, shading: .striped, number: .three)
+    static let card = Card(id: 1, figure: .lightning, color: .red, shading: .striped, number: .three)
     
     static var previews: some View {
         CardView(card: card)
