@@ -40,7 +40,8 @@ enum CardShading {
 }
 
 
-struct Card: Identifiable {
+struct Card: Identifiable, Equatable {
+    
     var id: Int
     
     var figure: CardFigure
@@ -48,5 +49,17 @@ struct Card: Identifiable {
     var shading: CardShading
     var number: CardNumber
     
-    var isMatched: Bool = false
+    var isMatched = false
+    var isChosen = false
+    
+    
+    
+    //MARK:- Card comparison extension
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.color == rhs.color &&
+            lhs.figure == rhs.figure &&
+            lhs.shading == rhs.shading &&
+            lhs.number == rhs.number
+    }
+    
 }

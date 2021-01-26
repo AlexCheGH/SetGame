@@ -10,8 +10,9 @@ import Foundation
 
 class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
     
-   @Published var visibleCards = [Card]()
+    @Published var visibleCards = [Card]()
     
+    private var selectedCards = [Card]()
     private var fullDeck: [Card]
     private var isFreshGame: Bool = true
     private let numberOfCards = 81
@@ -67,4 +68,84 @@ class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
             }
         }
     }
+    
+    
+    
+    //MARK: - Card shosen method
+//    func choose(card: Card) {
+//
+//        selectCard(card: card)
+//
+//        // when choosing card - change its status isChosen to True
+//        // choose three cards
+//        //if tapping on same card - deselect it
+//        //when choosing the first and the second card - do nothing. run checker once 3 cards are selected
+//        //if its a set - delete 3 cards from visible deck -> add 3 more cards to visible deck
+//
+//    }
+    
+    private func selectCard(card: Card) {
+        let mainCardIndex = visibleCards.index(of: card)! // no way of getting card from outside
+        
+        if !selectedCards.contains(card) {
+            
+            selectedCards.append(card)
+            visibleCards[mainCardIndex].isChosen = true //highlights the card
+            
+            if isSet() {
+                selectedCards.forEach{
+                    let index = visibleCards.index(of: $0)!
+                    visibleCards.remove(at: index)
+                }
+                
+                populateVisibleCards()
+                selectedCards.removeAll()
+            }
+        } else {
+            let index = selectedCards.index(of: card)!   //checked that card is there
+            selectedCards.remove(at: index)
+            
+            visibleCards[mainCardIndex].isChosen = false //de-highlights the card
+        }
+    }
+    
+    private func isSet() -> Bool {
+        
+        if selectedCards.count != 3 {
+            return false
+        }
+        
+        if selectedCards[0].color == selectedCards[1].color {
+            if selectedCards[0].color != selectedCards[2].color { return false }
+        }
+        else if selectedCards[1].color == selectedCards[2].color { return false }
+        else if selectedCards[0].color == selectedCards[0].color { return false }
+        
+        
+        if selectedCards[0].number == selectedCards[1].number {
+            if selectedCards[0].number != selectedCards[2].number { return false }
+        }
+        else if selectedCards[1].number == selectedCards[2].number { return false }
+        else if selectedCards[0].number == selectedCards[0].number {return false }
+        
+        
+        if selectedCards[0].figure == selectedCards[1].figure {
+            if selectedCards[0].figure != selectedCards[2].figure { return false }
+        }
+        else if selectedCards[1].figure == selectedCards[2].figure { return false }
+        else if selectedCards[0].figure == selectedCards[0].figure { return false }
+        
+        
+        if selectedCards[0].shading == selectedCards[1].shading {
+            if selectedCards[0].shading != selectedCards[2].shading { return false }
+        }
+        else if selectedCards[1].shading == selectedCards[2].shading { return false }
+        else if selectedCards[0].shading == selectedCards[0].shading { return false }
+        
+
+        return true
+    }
+    
+    
+    
 }
