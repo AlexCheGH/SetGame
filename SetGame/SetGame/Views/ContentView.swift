@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-   @ObservedObject var game: SetGame<String> = SetGame()
+   @ObservedObject var game: SetGame = SetGame()
     
     var body: some View {
         makeView()
@@ -17,14 +17,17 @@ struct ContentView: View {
     
     func makeView() -> some View {
         VStack {
-            Grid(items: game.visibleCards) { card in
+            Grid(items: game.cards) { card in
                 CardView(card: card)
                     .padding(5)
+                    .onTapGesture(count: 1, perform: {
+                        game.selectCard(card: card)
+                })
             }
             Button(action: {
-                game.populateVisibleCards()
+                game.addCards()
             }, label: {
-                Text("button")
+                Text("Add cards!")
             })
         }
     }

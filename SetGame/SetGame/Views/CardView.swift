@@ -40,6 +40,7 @@ struct CardView: View {
                 makeShape(figure: Diamond())
             case .lightning:
                 makeShape(figure: Lightning())
+//                Circle()
             case .stripe:
                 makeShape(figure: Stripe())
             }

@@ -26,7 +26,7 @@ extension CGImage {
 
 extension Shape {
 
-    func stripes(angle: Double = 45, colors: (UIColor, UIColor)) -> AnyView {
+    func stripes(angle: Double = 0, colors: (UIColor, UIColor)) -> AnyView {
         guard
             let stripePattern = CGImage.generateStripePattern(colors: colors)
         else { return AnyView(self)}

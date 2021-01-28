@@ -59,7 +59,7 @@ struct Card: Identifiable, Equatable {
         return lhs.color == rhs.color &&
             lhs.figure == rhs.figure &&
             lhs.shading == rhs.shading &&
-            lhs.number == rhs.number
+            lhs.number.rawValue == rhs.number.rawValue
     }
     
 }

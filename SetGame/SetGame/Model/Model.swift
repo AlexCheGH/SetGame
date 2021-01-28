@@ -8,17 +8,18 @@
 import Foundation
 
 
-class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
+struct Game<CardContent> where CardContent: Equatable {
     
-    @Published var visibleCards = [Card]()
+    var visibleCards = [Card]()
     
     private var selectedCards = [Card]()
     private var fullDeck: [Card]
     private var isFreshGame: Bool = true
     private let numberOfCards = 81
     
+    
     init() {
-        fullDeck = SetGame<CardContent>.generateAllCardCombinations()
+        fullDeck = Game<CardContent>.generateAllCardCombinations()
         self.populateVisibleCards()
     }
     
@@ -48,7 +49,7 @@ class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
     }
     
     //MARK:- Populating visible cards
-    func populateVisibleCards() {
+    mutating func populateVisibleCards() {
         if isFreshGame {
             dealCards(numberOfCards: 21)
             isFreshGame = false
@@ -60,7 +61,7 @@ class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
         }
     }
     
-    private func dealCards(numberOfCards: Int) {
+    private mutating func dealCards(numberOfCards: Int) {
         for _ in 0..<numberOfCards {
             if let element = fullDeck.first {
                 visibleCards.append(element)
@@ -72,41 +73,33 @@ class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
     
     
     //MARK: - Card shosen method
-//    func choose(card: Card) {
-//
-//        selectCard(card: card)
-//
-//        // when choosing card - change its status isChosen to True
-//        // choose three cards
-//        //if tapping on same card - deselect it
-//        //when choosing the first and the second card - do nothing. run checker once 3 cards are selected
-//        //if its a set - delete 3 cards from visible deck -> add 3 more cards to visible deck
-//
-//    }
     
-    private func selectCard(card: Card) {
+    mutating func selectCard(card: Card) {
         let mainCardIndex = visibleCards.index(of: card)! // no way of getting card from outside
         
         if !selectedCards.contains(card) {
-            
-            selectedCards.append(card)
             visibleCards[mainCardIndex].isChosen = true //highlights the card
+            selectedCards.append(card)
             
-            if isSet() {
-                selectedCards.forEach{
-                    let index = visibleCards.index(of: $0)!
-                    visibleCards.remove(at: index)
-                }
-                
-                populateVisibleCards()
-                selectedCards.removeAll()
-            }
         } else {
             let index = selectedCards.index(of: card)!   //checked that card is there
             selectedCards.remove(at: index)
-            
             visibleCards[mainCardIndex].isChosen = false //de-highlights the card
         }
+        
+        if isSet() {
+            selectedCards.forEach{
+                let index = visibleCards.index(of: $0)!
+                visibleCards.remove(at: index)
+            }
+            populateVisibleCards()
+            selectedCards.removeAll()
+        }
+        
+        if selectedCards.count > 3 {
+            selectedCards.removeAll()
+            selectedCards.append(card)
+        }  
     }
     
     private func isSet() -> Bool {
@@ -119,30 +112,30 @@ class SetGame<CardContent>: ObservableObject where CardContent: Equatable {
             if selectedCards[0].color != selectedCards[2].color { return false }
         }
         else if selectedCards[1].color == selectedCards[2].color { return false }
-        else if selectedCards[0].color == selectedCards[0].color { return false }
+        else if selectedCards[0].color == selectedCards[2].color { return false }
         
         
-        if selectedCards[0].number == selectedCards[1].number {
-            if selectedCards[0].number != selectedCards[2].number { return false }
+        if selectedCards[0].number.rawValue == selectedCards[1].number.rawValue {
+            if selectedCards[0].number.rawValue != selectedCards[2].number.rawValue { return false }
         }
-        else if selectedCards[1].number == selectedCards[2].number { return false }
-        else if selectedCards[0].number == selectedCards[0].number {return false }
+        else if selectedCards[1].number.rawValue == selectedCards[2].number.rawValue { return false }
+        else if selectedCards[0].number.rawValue == selectedCards[2].number.rawValue {return false }
         
         
         if selectedCards[0].figure == selectedCards[1].figure {
             if selectedCards[0].figure != selectedCards[2].figure { return false }
         }
         else if selectedCards[1].figure == selectedCards[2].figure { return false }
-        else if selectedCards[0].figure == selectedCards[0].figure { return false }
+        else if selectedCards[0].figure == selectedCards[2].figure { return false }
         
         
         if selectedCards[0].shading == selectedCards[1].shading {
             if selectedCards[0].shading != selectedCards[2].shading { return false }
         }
         else if selectedCards[1].shading == selectedCards[2].shading { return false }
-        else if selectedCards[0].shading == selectedCards[0].shading { return false }
+        else if selectedCards[0].shading == selectedCards[2].shading { return false }
         
-
+        
         return true
     }
     
