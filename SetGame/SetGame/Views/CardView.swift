@@ -30,7 +30,7 @@ struct CardView: View {
                 }
             }
         }
-        .colorize(color: card.color)
+        .colorize(color: card.color, isChosen: card.isChosen)
     }
     
     private func getFigure(for figure: CardFigure, shading: CardShading) -> some View {
@@ -40,7 +40,6 @@ struct CardView: View {
                 makeShape(figure: Diamond())
             case .lightning:
                 makeShape(figure: Lightning())
-//                Circle()
             case .stripe:
                 makeShape(figure: Stripe())
             }
