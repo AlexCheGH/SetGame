@@ -21,7 +21,7 @@ struct ContentView: View {
                 CardView(card: card)
                     .padding(5)
                     .onTapGesture(count: 1, perform: {
-                        game.selectCard(card: card)
+                        game.selectCard(card: card)                        
                 })
             }
             Button(action: {

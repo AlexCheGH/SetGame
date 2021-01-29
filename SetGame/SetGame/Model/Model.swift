@@ -76,10 +76,11 @@ struct Game<CardContent> where CardContent: Equatable {
     
     mutating func selectCard(card: Card) {
         let mainCardIndex = visibleCards.index(of: card)! // no way of getting card from outside
+        visibleCards[mainCardIndex].isChosen = true
         
         if !selectedCards.contains(card) {
-            visibleCards[mainCardIndex].isChosen = true //highlights the card
-            selectedCards.append(card)
+            //highlights the card
+            selectedCards.append(visibleCards[mainCardIndex])
             
         } else {
             let index = selectedCards.index(of: card)!   //checked that card is there
@@ -93,13 +94,24 @@ struct Game<CardContent> where CardContent: Equatable {
                 visibleCards.remove(at: index)
             }
             populateVisibleCards()
-            selectedCards.removeAll()
+            clearSelectedCards()
         }
         
         if selectedCards.count > 3 {
-            selectedCards.removeAll()
-            selectedCards.append(card)
-        }  
+            clearSelectedCards()
+            selectedCards.append(visibleCards[mainCardIndex])
+            visibleCards[mainCardIndex].isChosen = true
+        }
+        
+        print(selectedCards)
+    }
+    
+    private mutating func clearSelectedCards() {
+        selectedCards.forEach{
+            let index = visibleCards.index(of: $0)!
+            visibleCards[index].isChosen = false
+        }
+        selectedCards.removeAll()
     }
     
     private func isSet() -> Bool {
@@ -135,10 +147,6 @@ struct Game<CardContent> where CardContent: Equatable {
         else if selectedCards[1].shading == selectedCards[2].shading { return false }
         else if selectedCards[0].shading == selectedCards[2].shading { return false }
         
-        
         return true
     }
-    
-    
-    
 }
