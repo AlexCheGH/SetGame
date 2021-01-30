@@ -14,7 +14,7 @@ struct Game<CardContent> where CardContent: Equatable {
     
     private var selectedCards = [Card]()
     private var fullDeck: [Card]
-    private var isFreshGame: Bool = true
+    private var needFullRefresh: Bool = true
     private let numberOfCards = 81
     
     
@@ -50,13 +50,18 @@ struct Game<CardContent> where CardContent: Equatable {
     
     //MARK:- Populating visible cards
     mutating func populateVisibleCards() {
-        if isFreshGame {
+        if needFullRefresh {
             dealCards(numberOfCards: 21)
-            isFreshGame = false
+            needFullRefresh = false
         }
         else {
-            if fullDeck.count >= 1 {
+            if fullDeck.count >= 1 && !(visibleCards.count > 24) {
                 dealCards(numberOfCards: 3)
+            } else {
+                visibleCards.forEach{ fullDeck.append($0) }
+                visibleCards.removeAll()
+                needFullRefresh = true
+                populateVisibleCards()
             }
         }
     }

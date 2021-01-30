@@ -59,7 +59,7 @@ struct CardView: View {
         
         return Group { 
             if isStriped {
-                figure.fill(ImagePaint(image: image, scale: 0.3))
+                figure.fill(ImagePaint(image: image, scale: 0.2))
             }
             if isSolid {
                 figure.fill()
