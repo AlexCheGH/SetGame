@@ -49,16 +49,17 @@ struct CardView: View {
     }
     
     private func makeShape<Element>(figure: Element) -> some View where Element: Shape{
-//        let color = UIColor().getColor(cardColor: card.color)
         let shading = card.shading
         
         let isStriped = shading == .striped ? true : false
         let isSolid = shading == .solid ? true : false
         let isOpen = shading == .open ? true : false
         
+        let image = Image("stripe")
+        
         return Group { 
             if isStriped {
-                figure.fill(ImagePaint(image: Image("stripe"), scale: 0.3))
+                figure.fill(ImagePaint(image: image, scale: 0.3))
             }
             if isSolid {
                 figure.fill()
