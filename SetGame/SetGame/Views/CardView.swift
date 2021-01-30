@@ -55,11 +55,11 @@ struct CardView: View {
         let isSolid = shading == .solid ? true : false
         let isOpen = shading == .open ? true : false
         
-        let image = Image("stripe")
-        
+        let image = Image("stripes")
+
         return Group { 
             if isStriped {
-                figure.fill(ImagePaint(image: image, scale: 0.2))
+                figure.fill(ImagePaint(image: image, scale: 0.05))
             }
             if isSolid {
                 figure.fill()
