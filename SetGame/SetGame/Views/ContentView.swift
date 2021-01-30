@@ -19,7 +19,7 @@ struct ContentView: View {
         VStack {
             Grid(items: game.cards) { card in
                 CardView(card: card)
-                    .padding(5)
+                    .padding(3)
                     .onTapGesture(count: 1, perform: {
                         game.selectCard(card: card)                        
                 })
