@@ -75,8 +75,6 @@ struct Game<CardContent> where CardContent: Equatable {
         }
     }
     
-    
-    
     //MARK: - Card shosen method
     
     mutating func selectCard(card: Card) {
@@ -84,39 +82,24 @@ struct Game<CardContent> where CardContent: Equatable {
         visibleCards[mainCardIndex].isChosen = true
         
         if !selectedCards.contains(card) {
-            //highlights the card
-            selectedCards.append(visibleCards[mainCardIndex])
-            
+            selectedCards.append(visibleCards[mainCardIndex])  //highlights the card
         } else {
             let index = selectedCards.index(of: card)!   //checked that card is there
             selectedCards.remove(at: index)
             visibleCards[mainCardIndex].isChosen = false //de-highlights the card
         }
-        
         if isSet() {
             selectedCards.forEach{
                 let index = visibleCards.index(of: $0)!
                 visibleCards.remove(at: index)
             }
             populateVisibleCards()
-            clearSelectedCards()
         }
-        
         if selectedCards.count > 3 {
-            clearSelectedCards()
+            selectedCards.removeAll()
             selectedCards.append(visibleCards[mainCardIndex])
             visibleCards[mainCardIndex].isChosen = true
         }
-        
-        print(selectedCards)
-    }
-    
-    private mutating func clearSelectedCards() {
-        selectedCards.forEach{
-            let index = visibleCards.index(of: $0)!
-            visibleCards[index].isChosen = false
-        }
-        selectedCards.removeAll()
     }
     
     private func isSet() -> Bool {
