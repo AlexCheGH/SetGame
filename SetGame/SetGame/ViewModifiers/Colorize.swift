@@ -32,4 +32,3 @@ extension View {
         self.modifier(Colorize(color: color, isChosen: isChosen))
     }
 }
-
