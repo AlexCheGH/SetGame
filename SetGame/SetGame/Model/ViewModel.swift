@@ -24,4 +24,8 @@ class SetGame: ObservableObject {
         game.populateVisibleCards()
     }
     
+    func newGame() {
+        game = Game<String>()
+    }
+    
 }

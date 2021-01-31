@@ -1,0 +1,9 @@
+/* 
+  Localizable.string.strings
+  SetGame
+
+  Created by AP Aliaksandr Chekushkin on 1/31/21.
+  
+*/
+"draw" = "Draw";
+"new_game" = "New Game";
