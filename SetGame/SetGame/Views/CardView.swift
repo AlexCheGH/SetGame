@@ -18,19 +18,21 @@ struct CardView: View {
     
     private func makeFullCard(card: Card) -> some View {
         let numberOfFigures = card.number.rawValue
-        let lineWidth: CGFloat = 3
+        let lineWidth: CGFloat = 1
+        let shadowRadius: CGFloat = 2
         
         return ZStack {
-            RoundedRectangle(cornerRadius: 10).stroke(lineWidth: lineWidth)
+            RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: lineWidth).shadow(color: .black, radius: shadowRadius, x: 0, y: 1)
             VStack {
                 ForEach(0..<numberOfFigures) { index in
                     getFigure(for: card.figure, shading: card.shading)
                         .padding(5)
                         .aspectRatio(2/3, contentMode: .fit)
+                        .colorize(color: card.color, isChosen: card.isChosen)
                 }
             }
         }
-        .colorize(color: card.color, isChosen: card.isChosen)
+        
     }
     
 
