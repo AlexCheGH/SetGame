@@ -1,3 +1,4 @@
 # SetGame
 Set game written on Swift using SwiftUI
-![alt text](https://imgur.com/a/ZiXAvsw)
+
+![Demo](https://i.imgur.com/HcbXTMT.png)
